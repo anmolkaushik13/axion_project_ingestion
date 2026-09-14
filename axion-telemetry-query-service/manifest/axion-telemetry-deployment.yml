@@ -1,0 +1,31 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axion-telemetry-query-service
+  labels:
+    app: axion-telemetry-query-service
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: axion-telemetry-query-service
+
+  template:
+    metadata:
+      labels:
+        app: axion-telemetry-query-service
+
+    spec:
+      containers:
+        - name: axion-telemetry-query-service
+          image: acraksdevsecops.azurecr.io/axion-telemetry-service:v2
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://admin:P%40ssw01rd%40123@postgres:5432/axiondb"

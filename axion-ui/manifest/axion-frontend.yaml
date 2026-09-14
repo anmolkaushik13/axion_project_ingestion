@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axion-frontend
+  labels:
+    app: axion-frontend
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: axion-frontend
+
+  template:
+    metadata:
+      labels:
+        app: axion-frontend
+
+    spec:
+
+      containers:
+        - name: axion-frontend
+          image: acraksdevsecops.azurecr.io/axion-ui:v2
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
+

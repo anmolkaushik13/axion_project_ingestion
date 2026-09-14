@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-telemetry
+  labels:
+    app.kubernetes.io/name: ingress-telemetry
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: telemetry.anmolkaushik.shop
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: axion-telemetry-query-svc
+            port: 
+              number: 80

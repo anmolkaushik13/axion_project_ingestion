@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: axion-frontend-svc
+  labels:
+    app: axion-frontend
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app: axion-frontend
+
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

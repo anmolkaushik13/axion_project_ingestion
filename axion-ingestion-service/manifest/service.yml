@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: axion-ingestion-svc
+spec:
+  selector:
+    app: axion-ingestion-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP

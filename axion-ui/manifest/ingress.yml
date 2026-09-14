@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-ui
+  labels:
+    app.kubernetes.io/name: ingress-ui
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: ui.anmolkaushik.shop
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: axion-frontend-svc
+            port: 
+              number: 80
